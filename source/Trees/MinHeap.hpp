@@ -18,7 +18,6 @@ class MinHeap {
    * greater than its parent.
    */
   void swim();
-
   /** sink(int i)
    * Restores the heap order property after element removal. Assumes the element
    * at the end of the heap array has been swapped with the root, and the size
