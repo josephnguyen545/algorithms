@@ -49,18 +49,16 @@ void MinHeap::swim(){
    * children are greater than it.
    */
 void MinHeap::sink(int i){
-    if(array[i] > array[2*i] && array[(2*i) +1]){
+    if(array[i] > array[(2*i)+1] && array[i] > array[(2*i)]){
         return;
     }
     else if(array[i] > array[2*i]){
-        int temp = array [i];
-        array[i] = array[2*i];
-        array[2*i]= temp;
+        swap(&array[i], &array[2*i]);
+        return sink(2*i);
     }
     else if(array[i] > array[(2*i)+1]){
-        int temp = array[i];
-        array[i] = array[(2*i)+1];
-        array[(2*i)+1]= temp;
+        swap(&array[i], &array[2*i]);
+        return sink(2*i+1);
     }
 }
 
@@ -169,17 +167,20 @@ bool MinHeap::search(int data)
    * top-to-bottom) and returns its value.
    * Throws an error if the heap is empty or the index is out of bounds.
    */
-int MinHeap::remove(int i)
-{
-    if (i > size || i == 0 || size == 0)
-        throw "Error";
-    if (!search(i))
-    {
-        throw "Not Found";
+int MinHeap::remove(int i){
+    if(i>size || size == 0 || i == 0){
+       throw "Error"; 
     }
-    //Then swap with root, delete root, trickleUp
-    return i;
-}
+    if(!search(array[i])){
+      throw "Not found";
+    }
+    int ret = array[i];
+    swap(&array[size], &array[i]);
+    size--;
+    sink(i);
+    return ret; 
+   
+  }
 
 /** erase(int data)
    * Searches the MinHeap for the given data, and deletes it if it's found,
@@ -197,7 +198,14 @@ void MinHeap::erase(int data)
    */
 void MinHeap::print(std::ostream &oss)
 {
-    for(int i = 0; i <= size; i++){
-        oss << array[i] << ",";
+    if(size == 0){
+        oss << "\n";
     }
+    else{
+        for(int i = 0; i <= size; i++){
+            oss << array[i] << ", ";
+        }
+    }
+    oss << "\n";
+
 }
