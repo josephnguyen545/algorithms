@@ -18,6 +18,7 @@ class MinHeap {
    * greater than its parent.
    */
   void swim();
+
   /** sink(int i)
    * Restores the heap order property after element removal. Assumes the element
    * at the end of the heap array has been swapped with the root, and the size
@@ -40,6 +41,8 @@ class MinHeap {
    * Does nothing if data is not found in the subtree.
    */
   void erase(int i, int data);
+  void swap(int *x, int *y);
+  void moreBigger();
 
  public:
   MinHeap(unsigned int cap = 16);
