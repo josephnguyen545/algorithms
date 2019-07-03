@@ -273,6 +273,8 @@ TEST_CASE("stringtoint") {
   CHECK(stringtoint((char*)"1234") == 1234);
   CHECK(stringtoint((char*)"10") == 10);
   CHECK(stringtoint((char*)"33") == 33);
+  CHECK(stringtoint((char*)"-1") == -1);
+  CHECK(stringtoint((char*)"-99") == -99);
 }
 
 TEST_CASE("reverse") {
@@ -351,6 +353,10 @@ TEST_CASE("reverse") {
     reverse(arr4);
     for (int i = 0; i < 4; ++i)
       CHECK(arr4[i] == arr5[i]);
+
+    char arr[] = "12";
+    reverse(arr);
+    CHECK(arr[0] == '2');
   }
 }
 
@@ -362,6 +368,7 @@ TEST_CASE("Binary Search") {
     REQUIRE_EQ(binsearch(arr, 100, 50), 50);
     REQUIRE_EQ(binsearch(arr, 100, 0), 0);
     REQUIRE_EQ(binsearch(arr, 100, 99), 99);
+    REQUIRE_EQ(binsearch(arr, 25, 25), 25);
   }
   SUBCASE("Key is not preset") {
     REQUIRE_EQ(binsearch(arr, 100, 100), -1);
