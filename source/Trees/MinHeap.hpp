@@ -7,10 +7,9 @@
  */
 class MinHeap {
  private:
-  int* array;
+  int* arr;
   unsigned int capacity;
   int size;
-
   /** swim()
    * Restores the heap order property after an element is pushed. Assumes the
    * new element has been pushed at the end of the heap array (right-most node
@@ -27,7 +26,7 @@ class MinHeap {
    * children are greater than it.
    */
   void sink(int i);
-
+  void moreBigger();
   /** search(int i, int data)
    * Recursively searches for data in the MinHeap's subtree rooted at i,
    * returning true if the data is found and false if i is greater than or
@@ -41,8 +40,6 @@ class MinHeap {
    * Does nothing if data is not found in the subtree.
    */
   void erase(int i, int data);
-  void swap(int *x, int *y);
-  void moreBigger();
 
  public:
   MinHeap(unsigned int cap = 16);
@@ -54,7 +51,7 @@ class MinHeap {
    * Assumes duplicate elements will not be pushed.
    */
   void push(int data);
-
+  void swap(int *x, int *y);
   /** count()
    * Returns the number of elements in the MinHeap.
    */
