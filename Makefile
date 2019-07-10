@@ -1,3 +1,4 @@
+#make CXX=g++ MinHeap
 CXX=g++-8
 FLAGS=-std=c++11 -Wall -Wextra
 
@@ -17,11 +18,11 @@ functions: source/Functions/functions.test.cpp functions.o
 	$(CXX) $(FLAGS) $^
 	./a.out
 
-$(SORTS): source/Sorts/sort.test.cpp functions.o BST.o RBTree.o
+$(SORTS): source/Sorts/sort.test.cpp functions.o BST.o RBTree.o MinHeap.o
 	$(CXX) $(FLAGS) $^ source/Sorts/$@.cpp
 	./a.out
 
-String: source/String/String.test.cpp String.o functions.o
+String: source/String/String.test.cpp String.o functions.o Trie.o
 	$(CXX) $(FLAGS) $^
 	./a.out
 
