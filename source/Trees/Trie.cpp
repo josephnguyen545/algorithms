@@ -4,7 +4,7 @@
 // O(1)
 Trie::Trie() {
   root = new Node(0, false);
-  size = 0; 
+  size = 0;
 }
 
 // O(height)
