@@ -1,5 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../doctest.h"
+#include <sstream>
 
 #include "Hashtable.hpp"
 
@@ -44,6 +45,13 @@ TEST_CASE("Insert") {
             String str('a' + i);
             REQUIRE(test.search(str));
         }
+    }
+    SUBCASE("Table Resizing") {
+        String str('a');
+        for (int i = 0; i < 10; ++i) {
+            test.insert(str, i + 1);
+        }
+        REQUIRE(test.Size() == 10);
     }
 }
 
