@@ -9,6 +9,9 @@
  */
 class Graph {
  private:
+     int size;
+    int** matrix;
+    std::vector<int> data;
  public:
   /** Constructor
    * Creates a graph with n vertices but no edges.
